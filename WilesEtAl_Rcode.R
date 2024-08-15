@@ -1,3 +1,4 @@
+# Install packages
 devtools::install_github('NeotomaDB/neotoma2', force = TRUE)
 install.packages("tidyverse")
 install.packages("readxl")
@@ -14,7 +15,7 @@ library(gridExtra)
 library(cowplot)
 library(pacman)
 
-# Set bounding coordinates to capture sites only within Lower MI
+# Set bounding coordinates to capture NeotomaDB sites only within Lower MI
 lower.mich <- '{"type": "Polygon",
               "coordinates": [[
             [
@@ -217,7 +218,7 @@ lower.mich <- '{"type": "Polygon",
         ]
       }'
 
-# download datasets within the defined geography, narrowing to pollen records
+# download NeotomaDB datasets within the defined geography for lower Michigan, narrowing to pollen records
 lowermich_sites <- neotoma2::get_sites(loc = lower.mich, all_data = TRUE)
 lowermich_datasets <- neotoma2::get_datasets(lowermich_sites, all_data = TRUE)
 
@@ -229,7 +230,7 @@ lowermich_dl <- lowermich_pollen %>% get_downloads(all_data = TRUE) # download s
 
 
 allSamp <- samples(lowermich_dl) # extract all samples we've collected; note that
-# this will not yet include Sunrise Lake record so those data will be added manually
+# at time of analysis Sunrise Lake was not yet added to Neotoma so those data will be added manually
 
 # constrain taxa by overall abundance throughout record
 plottingTaxa <- taxa(lowermich_dl) %>%
@@ -1237,6 +1238,7 @@ write.csv(lower.mich.meta, "Lower Michigan Site Table.csv")
 plot(lower.mich.meta$`Record Length`, lower.mich.roc$roc.site.scores)
 plot(lower.mich.meta$`Record Length`, lower.mich.roc$roc.max)
 
+#GAM fit to MaxRoC
 ggplot(lower.mich.meta, aes(RecordLength, MaxRoC, colour = Sitename)) + 
   geom_point() + geom_smooth(method = 'gam', se = FALSE, linetype = 2, linewidth = 0.4) +
   labs(y="Max RoC Scores", x="Record Length", fill = "Site Name")# + scale_color_discrete(breaks=c("0-1ka", "1-2ka", "2-3ka", "3-4ka", "4-5ka", "5-6ka", "6-7ka","7-8ka", "8-9ka", "9-10ka", "10-11ka"))
@@ -1256,7 +1258,7 @@ counts$age[counts$siteid == "360"][1]
 site.inventory <- data.frame(siteid.list, lat, long, site.length, youngest, oldest)
 write.csv(site.inventory, file = "siteinventory.csv")
 
-# --- Below: attached code from separate file generating the Sunrise pollen diagram ---
+# --- Below: Standalone code that creates the Sunrise pollen diagram (ms. Figure 3) ---
 
 rise.poll <- readxl::read_excel("RISE_Poll_2.xlsx")
 test.poll <- rise.poll[, -c(10:15, 25:26, 124)]
