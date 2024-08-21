@@ -6,7 +6,7 @@ The R scripts included here achieve the following functions:
 2. Taxonomically harmonize datasets and prepare standard percentages.
 3. Run non-metric multidimensional scaling (NMDS) on the Lower Michigan pollen sites to ordinate the data.
 4. Calculate rates of change (RoC) for the pollen data, as an indicator of climate-driven community variability
-5. XX GAM & LOES??
+5. Run GAM and LOESS models for NMDS and distance-to-site data.
 4. Produce figures that are not map-based 
     1. Fig. 2:  NMDS ordination biplots
     2. Fig. 3:  Pollen diagram for Sunrise Lake 
