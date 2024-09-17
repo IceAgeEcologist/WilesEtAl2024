@@ -1,5 +1,5 @@
-# WilesEtAl2024
-This repository holds the R code and related input datasets for analyses and figures in Wiles et al. ms. submitted to Ecology Letters.  Analyses for this manuscript used a combination of R and ESRI ArcGIS software.  The R scripts are publicly archived here; the ESRI ArcGIS software employed a graphical user interface and so no code workflow exists.  ESRI analytical steps and functions are described in the manuscript.
+# README: Analytical Workflow Documentation
+This repository holds the R code and related input datasets for analyses and figures for a manuscript submitted to Global Ecology and Biogeography under double-blind review.  Analyses for this manuscript used a combination of R and ESRI ArcGIS software.  The R scripts are publicly archived here; the ESRI ArcGIS software employed a graphical user interface and so no code workflow exists.  ESRI analytical steps and functions are described in the manuscript.
 
 The R scripts included here achieve the following functions:
 1. Find and download fossil pollen data for Lower Michigan from the Neotoma Paleoecology Database (Neotoma) and add in the locally generated dataset for Sunrise Lake
